@@ -1,0 +1,24 @@
+<style>
+    .post_detail {
+        margin: 2rem auto;
+        max-width: 600px;
+        text-align: center;
+    }
+    .post_image {
+        width: 600px;
+        height: auto;
+    }
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post_detail">
+    <h1>{{ post.title }}</h1>
+    <h4>{{ post.description }}</h4>
+    <img class="post_image" src="{{ post.image.url }}" alt="no image">
+    <p>{{ post.body }}</p>
+    <p>{{ post.author }}, {{ post.created }}</p>
+    <h2><a href="{% url 'post_list' %}">Back to posts</a></h2>
+</div>
+{% endblock %}
