@@ -16,6 +16,11 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name='posts')
 
+    # new
+    class Meta:
+        # новые посты будут в начале
+        ordering = ['-created']
+
     def __str__(self):
         return self.title
 

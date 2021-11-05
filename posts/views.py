@@ -1,11 +1,13 @@
 from django.shortcuts import render
 
-from .models import Post
+from .models import Post, Category
 
 
 def post_list(request):
     posts = Post.objects.all()
-    return render(request, 'list.html', {'posts': posts})
+    categories = Category.objects.all()
+    return render(request, 'list.html', {'posts': posts,
+                                         'categories': categories})
 
 
 def post_detail(request, pk):
