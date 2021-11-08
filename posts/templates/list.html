@@ -25,7 +25,9 @@
 <div class="categories_list">
     {% for cat in categories %}
         <ul class="cat_ul">
-            <h3>{{ cat.name }}</h3>
+            <a href="{% url 'category_detail' cat.pk %}">
+                <h3>{{ cat.name }}</h3>
+            </a>
         </ul>
     {% endfor %}
 </div>

@@ -1,1 +1,23 @@
-<h1>Hello from cat detail</h1>
+{% extends 'base.html' %}
+
+<style>
+    .posts {
+        max-width: 600px;
+        margin: 2rem auto;
+        text-align: center;
+    }
+</style>
+
+{% block content %}
+    <div class="posts" style="max-width: 600px; margin: auto; text-align: center">
+        <h1><a href="{% url 'post_list' %}">Main</a></h1>
+        <a href="{% url 'post_list' %}"></a>
+        {% for post in posts %}
+            <a href="{% url 'post_detail' post.pk %}">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.author }}</p>
+                <img src="{{ post.image.url }}" alt="no image" width="600px" height="auto">
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
