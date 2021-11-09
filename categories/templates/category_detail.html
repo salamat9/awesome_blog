@@ -10,7 +10,9 @@
 
 {% block content %}
     <div class="posts" style="max-width: 600px; margin: auto; text-align: center">
-        <h1><a href="{% url 'post_list' %}">Main</a></h1>
+        <button>
+            <a href="{% url 'category_delete' category.pk %}">Delete</a>
+        </button>
         <a href="{% url 'post_list' %}"></a>
         {% for post in posts %}
             <a href="{% url 'post_detail' post.pk %}">

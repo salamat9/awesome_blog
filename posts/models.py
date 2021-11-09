@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 # new
 from categories.models import Category
@@ -24,7 +25,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[self.pk])
 
-class Like(models.Model):
-    like = models.PositiveIntegerField
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+                             related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='comments')
+    content = models.TextField()
+
+    def __str__(self):
+        return f'comment on {self.post.title}'
+
 
