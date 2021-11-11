@@ -78,3 +78,6 @@ def post_delete(request, pk):
         return redirect('post_list')
     return render(request, 'delete.html', {'post': post})
 
+
+
+
