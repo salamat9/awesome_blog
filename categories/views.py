@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import Category
 from posts.models import Post
 from .forms import CategoryForm
@@ -10,7 +11,7 @@ def category_detail(request, pk):
     return render(request, 'category_detail.html', {'posts': posts,
                                                     'category': category})
 
-
+@login_required(login_url='login')
 def category_create(request):
     form = CategoryForm()
     if request.POST:

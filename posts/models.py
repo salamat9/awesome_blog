@@ -14,8 +14,7 @@ class Post(models.Model):
                                related_name='posts')
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name='posts')
-    likes = models.ManyToManyField(User, blank=True, symmetrical=False,
-                                   related_name='liked_posts')
+    likes = models.ManyToManyField(User, blank=True, related_name='liked_posts')
 
     class Meta:
         ordering = ['-created']
